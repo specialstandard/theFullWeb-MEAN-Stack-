@@ -16,7 +16,8 @@ var users = require('./routes/users');
 
 var app = express();
 
-mongoose.connect('mongodb://localhost/news');
+//mongoose.connect('mongodb://localhost/news');
+mongoose.connect('mongodb://root:xusix2eziV@apollo.modulusmongo.net:27017/Oxaq6ety?autoReconnect=true&connectTimeoutMS=60000');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

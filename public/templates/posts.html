@@ -11,8 +11,10 @@
 
  <div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
    <span
-     ng-click="incrementUpvotes(comment)">^</span>
-   {{comment.upvotes}} - byXXr {{comment.author}}
+     ng-click="incrementUpvotes(comment)" style = "cursor:pointer">
+     <img src = ./images/thumbsup.png width="20" height = "20" >
+</span>
+   {{comment.upvotes}} - by {{comment.author}}
    <span style="font-size:20px; margin-left:10px;">
      {{comment.body}}
    </span>

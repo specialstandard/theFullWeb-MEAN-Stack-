@@ -95,11 +95,11 @@ router.post('/register', function(req, res, next){
 
   var user = new User();
   user.username = req.body.username;
-  user.setPassword(req.body.password)
+  user.setPassword(req.body.password);
   user.save(function (err){
     if(err){ return next(err); }
 
-    return res.json({token: user.generateJWT()})
+    return res.json({token: user.generateJWT()});
   });
 });
 router.post('/login', function(req, res, next){

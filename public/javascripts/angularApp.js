@@ -26,7 +26,7 @@ app.config(function($stateProvider, $urlRouterProvider){
     })
     .state('login', {
       url: '/login',
-      templateUrl: '/login.html',
+      templateUrl: '/templates/login.html',
       controller: 'AuthCtrl',
       onEnter: ['$state', 'auth', function($state, auth){
         if(auth.isLoggedIn()){
@@ -36,7 +36,7 @@ app.config(function($stateProvider, $urlRouterProvider){
     })
     .state('register', {
       url: '/register',
-      templateUrl: '/register.html',
+      templateUrl: '/templates/register.html',
       controller: 'AuthCtrl',
       onEnter: ['$state', 'auth', function($state, auth){
         if(auth.isLoggedIn()){
@@ -89,7 +89,7 @@ app.factory('auth', function($http, $window){
   return auth;
 });
 
-app.factory('posts', [$http, auth, function($http, auth){
+app.factory('posts', function($http, auth){
   var o = {
     posts:  [
         {
@@ -140,7 +140,7 @@ app.factory('posts', [$http, auth, function($http, auth){
     });
 };
   return o;
-}]);
+});
 
 app.controller('MainCtrl', function($scope, posts, auth){
       $scope.posts = posts.posts;
@@ -202,8 +202,8 @@ app.controller('AuthCtrl', function($scope, $state, auth){
   };
 });
 
-app.controller('NavCtrl', ['$scope','auth', function($scope, auth){
+app.controller('NavCtrl', function($scope, auth){
   $scope.isLoggedIn = auth.isLoggedIn;
   $scope.currentUser = auth.currentUser;
   $scope.logOut = auth.logOut;
-}]);
+});
